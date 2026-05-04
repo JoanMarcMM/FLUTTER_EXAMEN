@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'detail_page.dart';
+import 'package:flutter_examen/routes.dart';
 
-class ListPage extends StatelessWidget {
-  const ListPage({super.key});
-
-  // Cambia a lista vacía [] para probar el estado vacío
-  static const List<String> _items = [
+ const List<String> _items = [
     'Tarea A',
     'Tarea B',
     'Tarea C',
   ];
+
+class ListPage extends StatelessWidget {
+  const ListPage({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +34,12 @@ class ListPage extends StatelessWidget {
                   title: Text('Elemento $index: ${_items[index]}'),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => Home(),
-                      ),
-                    );
+                    context.push(Routes.detailPath(index));
                   },
                 );
               },
             ),
     );
   }
+  
 }
